@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h3>{{"Directory/file browsing " + "application!"}}</h3>
+
+<div data-ng-controller="TestingController" data-ng-init="initialization()">
+    <!--table-->
+    <div>
+        <table style="border: 1px solid gray;">
+            <tr>
+                <th>Less 10Mb</th>
+                <th>10Mb - 50Mb</th>
+                <th>More 100Mb</th>
+            </tr>
+            <tr>
+                <td ng-repeat="file in files">{{file}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!--the line for current directory-->
+    <div id="currpath">
+        <p style="font-size: 12pt;"><span>Current path: </span>{{currentDirectoryValue}}</p>
+    </div>
+
+    <!--block for subdirectories-->
+    <p><a ng-click="parentDirectory(currentDirectoryValue)">. . .</a></p>
+    <div ng-repeat="directory in directories">
+        <p><a ng-click="testingSubdirectory(directory.LongName)" style="font-size: 12pt;">{{directory.ShortName}}</a></p>
+    </div>
+    <div ng-repeat="directoryfile in directoryfiles">
+        <p><a style="font-size: 12pt;">{{directoryfile}}</a></p>
+    </div>
+</div>
